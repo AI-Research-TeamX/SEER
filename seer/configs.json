@@ -1,0 +1,41 @@
+{
+    "config_1": {
+        "classifier_engine": "qwen2.5-72b",
+        "classifier_engine_temperature": 0,
+        "classifier_engine_max_tokens": 128,
+        "classifier_max_steps": 1,
+        "classifier_prompt": "classifier",
+
+        "decomposer_engine": "qwen2.5-72b",
+        "decomposer_engine_temperature": 0,
+        "decomposer_engine_max_tokens": 256,
+        "decomposer_max_steps": 1,
+        "decomposer_prompt": "decomposer_adaptive",
+
+        "solver_engine": "qwen2.5-72b",
+        "solver_engine_temperature": 0,
+        "solver_engine_max_tokens": 2048,
+        "solver_max_steps": 1,
+        "solver_prompt": "solver_adaptive",
+        "solver_select_strategy": "goal_oriented",
+        "solver_select_num": 4,
+
+        "handler_engine": "qwen2.5-72b",
+        "handler_engine_temperature": 0,
+        "handler_engine_max_tokens": 256,
+        "handler_max_steps": 1,
+        "handler_prompt_strategy": "handler_tools_prompt",
+        
+        "verifier_engine": "qwen2.5-72b",
+        "verifier_engine_temperature": 0,
+        "verifier_engine_max_tokens": 256,
+        "verifier_max_steps": 1,
+        "verifier_prompt": "verifier",
+        
+        "summarizer_engine": "qwen2.5-72b",
+        "summarizer_engine_temperature": 0,
+        "summarizer_engine_max_tokens": 256,
+        "summarizer_max_steps": 1,
+        "summarizer_prompt": "summarizer"
+    }
+}

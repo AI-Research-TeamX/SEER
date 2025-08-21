@@ -1,0 +1,169 @@
+[
+    {
+        "id": "id_1",
+        "class": "flight",
+        "question": "How many extra minutes did the DL1575 flight take from ATL to MCO on 2022-01-12?",
+        "steps": [
+            "Step 1: We can use LoadDB tool to load flight database. <CALL_BEGIN>LoadDB[flight]<CALL_END>",
+            "Step 2: Before computing the extra minutes, we need to filter the flight database. <CALL_BEGIN>FilterDB[IATA_Code_Marketing_Airline=DL, Flight_Number_Marketing_Airline=1575, Origin=ATL, Dest=MCO, FlightDate=2022-01-12]<CALL_END>",
+            "Step 3: To compute the extra minutes, we should get the values of the departure delayed time and the arrival delayed time. First, use GetValue tool to get the departure delayed time(get the arrival delayed time in the next subtask). <CALL_BEGIN>GetValue[DepDelay]<CALL_END>",
+            "Step 4: Second, use GetValue tool to get the arrival delayed time. <CALL_BEGIN>GetValue[ArrDelay]<CALL_END>",
+            "Step 5: To compute the extra minutes, we need to subtract the departure delayed time from the arrival delayed time. <CALL_BEGIN>Calculate[(-17)-(-7)]<CALL_END>",
+            "Step 6: There are no more questions left to ask. The final answer is -10. <CALL_BEGIN>Finish[-10]<CALL_END>"
+        ],
+        "tools": [
+            "LoadDB",
+            "FilterDB",
+            "GetValue",
+            "GetValue",
+            "Calculate",
+            "Finish"
+        ],
+        "parameters": [
+            "IATA_Code_Marketing_Airline=DL, Flight_Number_Marketing_Airline=1575, Origin=ATL, Dest=MCO, FlightDate=2022-01-12",
+            "DepDelay",
+            "ArrDelay",
+            "(-17)-(-7)",
+            "-10"
+        ],
+        "full_text": "Question: How many extra minutes did the DL1575 flight take from ATL to MCO on 2022-01-12?\nStep 1: We can use LoadDB tool to load flight database. <CALL_BEGIN>LoadDB[flight]<CALL_END>\nResult 1: We have successfully loaded the flight database, including the following columns: FlightDate, Airline, Origin, Dest, Cancelled, Diverted, CRSDepTime, DepTime, DepDelayMinutes, DepDelay, ArrTime, ArrDelayMinutes, AirTime, CRSElapsedTime, ActualElapsedTime, Distance, Year, Quarter, Month, DayofMonth, DayOfWeek, Marketing_Airline_Network, Operated_or_Branded_Code_Share_Partners, DOT_ID_Marketing_Airline, IATA_Code_Marketing_Airline, Flight_Number_Marketing_Airline, Operating_Airline, DOT_ID_Operating_Airline, IATA_Code_Operating_Airline, Tail_Number, Flight_Number_Operating_Airline, OriginAirportID, OriginAirportSeqID, OriginCityMarketID, OriginCityName, OriginState, OriginStateFips, OriginStateName, OriginWac, DestAirportID, DestAirportSeqID, DestCityMarketID, DestCityName, DestState, DestStateFips, DestStateName, DestWac, DepDel15, DepartureDelayGroups, DepTimeBlk, TaxiOut, WheelsOff, WheelsOn, TaxiIn, CRSArrTime, ArrDelay, ArrDel15, ArrivalDelayGroups, ArrTimeBlk, DistanceGroup, DivAirportLandings.\nStep 2: Before computing the extra minutes, we need to filter the flight database. <CALL_BEGIN>FilterDB[IATA_Code_Marketing_Airline=DL, Flight_Number_Marketing_Airline=1575, Origin=ATL, Dest=MCO, FlightDate=2022-01-12]<CALL_END>\nResult 2: We have successfully filtered the data (1 rows).\nStep 3: To compute the extra minutes, we should get the values of the departure delayed time and the arrival delayed time. First, use GetValue tool to get the departure delayed time(get the arrival delayed time in the next subtask). <CALL_BEGIN>GetValue[DepDelay]<CALL_END>\nResult 3: -7.0\nStep 4: Second, use GetValue tool to get the arrival delayed time. <CALL_BEGIN>GetValue[ArrDelay]<CALL_END>\nResult 4: -17.0\nStep 5: To compute the extra minutes, we need to subtract the departure delayed time from the arrival delayed time. <CALL_BEGIN>Calculate[(-17)-(-7)]<CALL_END>\nResult 5: -10\nStep 6: There are no more questions left to ask. The final answer is -10. <CALL_BEGIN>Finish[-10]<CALL_END>\nResult 6: -10"
+    },
+    {
+        "id": "id_2",
+        "class": "coffee",
+        "question": "What was the opening price of coffee on 2011-05-18?",
+        "steps": [
+            "Step 1: We can use SQLInterpreter tool to solve it. <CALL_BEGIN>SQLInterpreter[SELECT Open FROM coffee WHERE Date='2011-05-18']<CALL_END>",
+            "Step 2: There are no more questions left to ask. The final answer is 268.0. <CALL_BEGIN>Finish[268.0]<CALL_END>"
+        ],
+        "tools": [
+            "SQLInterpreter",
+            "Finish"
+        ],
+        "parameters": [
+            "SELECT Open FROM coffee WHERE Date='2011-05-18'",
+            "268.0"
+        ],
+        "full_text": "Question: What was the opening price of coffee on 2011-05-18?\nStep 1: We can use SQLInterpreter tool to solve it. <CALL_BEGIN>SQLInterpreter[SELECT Open FROM coffee WHERE Date='2011-05-18']<CALL_END>\nResult 1: 268.0\nStep 2: There are no more questions left to ask. The final answer is 268.0. <CALL_BEGIN>Finish[268.0]<CALL_END>\nResult 2: 268.0"
+    },
+    {
+        "id": "id_3",
+        "class": "dblp",
+        "question": "When was the paper Learning the Principle of Least Action with Reinforcement Learning. published?",
+        "steps": [
+            "Step 1: We can use LoadGraph tool to load the DBLP graph. <CALL_BEGIN>LoadGraph[dblp]<CALL_END>",
+            "Step 2: The question is asking the published date of a paper. We need to check the node from the PaperNet in DBLP graph. <CALL_BEGIN>NodeCheck[PaperNet, Learning the Principle of Least Action with Reinforcement Learning.]<CALL_END>",
+            "Step 3: According to the result above, we know the authors of the paper are Zehao Jin, Joshua Yao-Yu, Siao-Fong Li; the published year is 2021; the venue of the paper is AAAI Spring Symposium - MLPS; the paper is 321-307+1=15 pages. There are no more questions left to ask. The final answer is 2021. <CALL_BEGIN>Finish[2021]<CALL_END>"
+        ],
+        "tools": [
+            "LoadGraph",
+            "NodeCheck",
+            "Finish"
+        ],
+        "parameters": [
+            "dblp",
+            "PaperNet, Learning the Principle of Least Action with Reinforcement Learning.",
+            "2021"
+        ],
+        "full_text": "Question: When was the paper Learning the Principle of Least Action with Reinforcement Learning. published?\nStep 1: We can use LoadGraph tool to load the DBLP graph. <CALL_BEGIN>LoadGraph[dblp]<CALL_END>\nResult 1: DBLP graph is loaded.\nStep 2: The question is asking the published date of a paper. We need to check the node from the PaperNet in DBLP graph. <CALL_BEGIN>NodeCheck[PaperNet, Learning the Principle of Least Action with Reinforcement Learning.]<CALL_END>\nResult 2: {'title': 'Learning the Principle of Least Action with Reinforcement Learning.', 'authors': [{'id': '', 'name': 'Zehao Jin', 'org': ''}, {'id': '', 'name': 'Joshua Yao-Yu Lin', 'org': ''}, {'id': '', 'name': 'Siao-Fong Li', 'org': ''}], 'year': 2021, 'venue': {'raw': 'AAAI Spring Symposium - MLPS'}, 'n_citation': 8, 'keywords': [], 'doc_type': 'Conference', 'page_start': '307', 'page_end': '321'}\nStep 3: According to the result above, we know the authors of the paper are Zehao Jin, Joshua Yao-Yu, Siao-Fong Li; the published year is 2021; the venue of the paper is AAAI Spring Symposium - MLPS; the paper is 321-307+1=15 pages. There are no more questions left to ask. The final answer is 2021. <CALL_BEGIN>Finish[2021]<CALL_END>\nResult 3: 2021"
+    },
+    {
+        "id": "id_4",
+        "class": "dblp",
+        "question": "How many collaborators does Chao Zhang have in the DBLP graph?",
+        "steps": [
+            "Step 1: We can use LoadGraph tool to load the DBLP graph. <CALL_BEGIN>LoadGraph[dblp]<CALL_END>",
+            "Step 2: The question is asking the collaborators of a person, we need to check the neighboring nodes from the AuthorNet in DBLP graph. <CALL_BEGIN>NeighbourCheck[AuthorNet, Chao Zhang]<CALL_END>",
+            "Step 3: There are no more questions left to ask. According to the result above, we know the number of collaborators of Chao Zhang is 6. <CALL_BEGIN>Finish[6]<CALL_END>"
+        ],
+        "tools": [
+            "LoadGraph",
+            "NeighbourCheck",
+            "Finish"
+        ],
+        "parameters": [
+            "dblp",
+            "AuthorNet, Chao Zhang",
+            "6"
+        ],
+        "full_text": "Question: How many collaborators does Chao Zhang have in the DBLP graph?\nStep 1: We can use LoadGraph tool to load the DBLP graph. <CALL_BEGIN>LoadGraph[dblp]<CALL_END>\nResult 1: DBLP graph is loaded.\nStep 2: The question is asking the collaborators of a person, we need to check the neighboring nodes from the AuthorNet in DBLP graph. <CALL_BEGIN>NeighbourCheck[AuthorNet, Chao Zhang]<CALL_END>\nResult 2: ['Rao Fu', 'Jingdong Wang', 'Weihong Lin', 'X Chen', 'YUHUI YUAN', 'Lang Huang']\nStep 3: There are no more questions left to ask. According to the result above, we know the number of collaborators of Chao Zhang is 6. <CALL_BEGIN>Finish[6]<CALL_END>\nResult 3: 6"
+    },
+    {
+        "id": "id_5",
+        "class": "dblp",
+        "question": "What venue did Chao Zhang and Weihong Lin collaborate most in the DBLP citation network?",
+        "steps": [
+            "Step 1: We can use LoadGraph tool to load the DBLP graph. <CALL_BEGIN>LoadGraph[dblp]<CALL_END>",
+            "Step 2: The question is asking the most venue of two persons, we need to check the edges between them to get more information from the AuthorNet in DBLP graph. <CALL_BEGIN>EdgeCheck[AuthorNet, Chao Zhang, Weihong Lin]<CALL_END>",
+            "Step 3: There is only one paper on which they collaborate. We can check the paper in PaperNet to get the venue(the most venue). <CALL_BEGIN>NodeCheck[PaperNet, HRFormer: High-Resolution Vision Transformer for Dense Predict.]<CALL_END>",
+            "Step 4: The venue of this paper is Annual Conference on Neural Information Processing Systems. There are no more questions left to ask. <CALL_BEGIN>Finish[Annual Conference on Neural Information Processing Systems]<CALL_END>"
+        ],
+        "tools": [
+            "LoadGraph",
+            "EdgeCheck",
+            "NodeCheck",
+            "Finish"
+        ],
+        "parameters": [
+            "dblp",
+            "AuthorNet, Chao Zhang, Weihong Lin",
+            "PaperNet, HRFormer: High-Resolution Vision Transformer for Dense Predict.",
+            "Annual Conference on Neural Information Processing Systems"
+        ],
+        "full_text": "Question: What venue did Chao Zhang and Weihong Lin collaborate most in the DBLP citation network?\nStep 1: We can use LoadGraph tool to load the DBLP graph. <CALL_BEGIN>LoadGraph[dblp]<CALL_END>\nResult 1: DBLP graph is loaded.\nStep 2: The question is asking the most venue of two persons, we need to check the edges between them to get more information from the AuthorNet in DBLP graph. <CALL_BEGIN>EdgeCheck[AuthorNet, Chao Zhang, Weihong Lin]<CALL_END>\nResult 2: {'weight': 1, 'papers': ['HRFormer: High-Resolution Vision Transformer for Dense Predict.'], 'n_citation': [95]}\nStep 3: There is only one paper on which they collaborate. We can check the paper in PaperNet to get the venue(the most venue). <CALL_BEGIN>NodeCheck[PaperNet, HRFormer: High-Resolution Vision Transformer for Dense Predict.]<CALL_END>\nResult 3: {'title': 'HRFormer: High-Resolution Vision Transformer for Dense Predict.', 'venue': {'raw': 'Annual Conference on Neural Information Processing Systems'}, 'n_citation': 95, 'page_start': '7281', 'page_end': '7293'}\nStep 4: The venue of this paper is Annual Conference on Neural Information Processing Systems. There are no more questions left to ask. <CALL_BEGIN>Finish[Annual Conference on Neural Information Processing Systems]<CALL_END>\nResult 4: Annual Conference on Neural Information Processing Systems"
+    },
+    {
+        "id": "id_6",
+        "class": "agenda",
+        "question": "Where did Stephen's Opera performance take place?",
+        "steps": [
+            "Step 1: We can use RetrieveAgenda tool to retrieve relevant information. <CALL_BEGIN>RetrieveAgenda[Stephen, Opera performance, location]<CALL_END>",
+            "Step 2: There are no more questions left to ask. According to the result above, we know the event happened in Lyric Opera. <CALL_BEGIN>Finish[Lyric Opera]<CALL_END>"
+        ],
+        "tools": [
+            "RetrieveAgenda",
+            "Finish"
+        ],
+        "parameters": [
+            "Stephen, Opera performance, location",
+            "Lyric Opera"
+        ],
+        "full_text": "Question: Where did Stephen's Opera performance take place?\nStep 1: We can use RetrieveAgenda tool to retrieve relevant information. <CALL_BEGIN>RetrieveAgenda[Stephen, Opera performance, location]<CALL_END>\nResult 1: On January 29, 2022, there will be an opera performance at the Lyric Opera House, featuring Stephen. The show will start at 7:00 PM and end at 9:00 PM. It promises to be a wonderful evening of beautiful music and powerful performances in a stunning venue. Come and experience the magic of opera at its finest!\nStep 2: There are no more questions left to ask. According to the result above, we know the event happened in Lyric Opera. <CALL_BEGIN>Finish[Lyric Opera]<CALL_END>\nResult 2: Lyric Opera"
+    },
+    {
+        "id": "id_7",
+        "class": "scirex",
+        "question": "What is the corresponding Mean_IoU score of the FRRN method on Cityscapes dataset for Semantic_Segmentation task?",
+        "steps": [
+            "Step 1: We can use RetrieveScirex tool to retrieve relevant information. <CALL_BEGIN>RetrieveScirex[Mean_IoU, FRRN, Cityscapes, Semantic_Segmentation]<CALL_END>",
+            "Step 2: There are no more questions left to ask. As the approach achieves an intersection-over-union score of 71.8% on the Cityscapes dataset, the answer should be 71.8%. <CALL_BEGIN>Finish[71.8%]<CALL_END>"
+        ],
+        "tools": [
+            "RetrieveScirex",
+            "Finish"
+        ],
+        "parameters": [
+            "Mean_IoU, FRRN, Cityscapes, Semantic_Segmentation",
+            "71.8%"
+        ],
+        "full_text": "Question: What is the corresponding Mean_IoU score of the FRRN method on Cityscapes dataset for Semantic_Segmentation task?\nStep 1: We can use RetrieveScirex tool to retrieve relevant information. <CALL_BEGIN>RetrieveScirex[Mean_IoU, FRRN, Cityscapes, Semantic_Segmentation]<CALL_END>\nResult 1: The other stream undergoes a sequence of pooling operations to obtain robust features for recognition. The two streams are coupled at the full image resolution using residuals. Without additional processing steps and without pretraining, our approach achieves an intersection-over-union score of 71.8% on the Cityscapes dataset.\nStep 2: There are no more questions left to ask. As the approach achieves an intersection-over-union score of 71.8% on the Cityscapes dataset, the answer should be 71.8%. <CALL_BEGIN>Finish[71.8%]<CALL_END>\nResult 2: 71.8%"
+    },
+    {
+        "id": "id_8",
+        "class": "gsm8k",
+        "question": "Michael had 58 golf balls. On Tuesday, he lost 23 golf balls. On Wednesday, he lost 2 more. How many golf balls did he have at the end of Wednesday?",
+        "steps": [
+            "Step 1: We can use PythonInterpreter tool to solve the question. <CALL_BEGIN>PythonInterpreter[# solution in Python:\n# Michael had 58 golf balls. On tuesday, he lost 23 golf balls. On wednesday,\n# he lost 2 more. How many golf balls did he have at the end of wednesday?\ngolf_balls_initial = 58\ngolf_balls_lost_tuesday = 23\ngolf_balls_lost_wednesday = 2\ngolf_balls_left = golf_balls_initial - golf_balls_lost_tuesday - golf_balls_lost_wednesday\nanswer = golf_balls_left]<CALL_END>",
+            "Step 2: There are no more questions left to ask. After execution of Python Code, we know that the answer is 33. <CALL_BEGIN>Finish[33]<CALL_END>"
+        ],
+        "tools": [
+            "PythonInterpreter",
+            "Finish"
+        ],
+        "parameters": [
+            "# solution in Python:\n# Michael had 58 golf balls. On tuesday, he lost 23 golf balls. On wednesday,\n# he lost 2 more. How many golf balls did he have at the end of wednesday?\ngolf_balls_initial = 58\ngolf_balls_lost_tuesday = 23\ngolf_balls_lost_wednesday = 2\ngolf_balls_left = golf_balls_initial - golf_balls_lost_tuesday - golf_balls_lost_wednesday\nanswer = golf_balls_left",
+            "33"
+        ],
+        "full_text": "Question: Michael had 58 golf balls. On Tuesday, he lost 23 golf balls. On Wednesday, he lost 2 more. How many golf balls did he have at the end of Wednesday? \nStep 1: We can use PythonInterpreter tool to solve the question. <CALL_BEGIN>PythonInterpreter[# solution in Python:\n# Michael had 58 golf balls. On tuesday, he lost 23 golf balls. On wednesday,\n# he lost 2 more. How many golf balls did he have at the end of wednesday?\ngolf_balls_initial = 58\ngolf_balls_lost_tuesday = 23\ngolf_balls_lost_wednesday = 2\ngolf_balls_left = golf_balls_initial - golf_balls_lost_tuesday - golf_balls_lost_wednesday\nanswer = golf_balls_left]<CALL_END>\nResult 1: 33\nStep 2: There are no more questions left to ask. After execution of Python Code, we know that the answer is 33. <CALL_BEGIN>Finish[33]<CALL_END>\nResult 2: 33"
+    }
+]
