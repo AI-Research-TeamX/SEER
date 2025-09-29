@@ -103,5 +103,10 @@ For detailed numbers, see the paper and `plot/` folder.
 If you find this code useful, please cite our paper:
 
 ```bibtex
-#TODO
+@article{cui2025self,
+  title={Self-Guided Function Calling in Large Language Models via Stepwise Experience Recall},
+  author={Cui, Sijia and He, Aiyao and Xu, Shuai and Zhang, Hongming and Wang, Yanna and Zhang, Qingyang and Wang, Yajing and Xu, Bo},
+  journal={arXiv preprint arXiv:2508.15214},
+  year={2025}
+}
 ```
